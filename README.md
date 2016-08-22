@@ -5,6 +5,8 @@ Welcome to NoireStructs! This gem contains Data Structures and Algorithms implem
 This are the currently implemented structures:
   * Priority Queues:
     - Binary Heap.
+
+
 The code is written using the [Ruby C API](https://silverhammermba.github.io/emberb/c/).
 
 ## Installation

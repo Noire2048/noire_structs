@@ -4,5 +4,6 @@
 #include "ruby.h"
 #include <stdlib.h>
 #include "../boolean.h"
+#include <stdint.h>
 
 #endif
