@@ -3,7 +3,8 @@
 Welcome to NoireStructs! This gem contains Data Structures and Algorithms implemented in C. This was intended to improve the performance of some algorithms that may be very slow running on the RVM.
 
 This are the currently implemented structures:
-
+  * Priority Queues:
+    - Binary Heap.
 The code is written using the [Ruby C API](https://silverhammermba.github.io/emberb/c/).
 
 ## Installation
