@@ -93,6 +93,9 @@ m_mark(t_bheap data){
 VALUE
 m_alloc(VALUE self){
   t_bheap data = malloc(sizeof(bheap));
+  if (data == NULL){
+    rb_raise(rb_eRuntimeError, "The computer ran out of memory.");
+  }
   return Data_Wrap_Struct(self, m_mark, m_free, data);
 }
 
@@ -126,6 +129,9 @@ m_initialize(int argc, VALUE * argv, VALUE self){
 	Data_Get_Struct(self, bheap, data);
 
   data->heap = malloc(sizeof(VALUE)*init);
+  if (data->heap == NULL ){
+    rb_raise(rb_eRuntimeError, "The computer ran out of memory.");
+  }
   data->array_size = init;
   data->size = 0;
   data->realloc_factor = rf;
@@ -144,6 +150,7 @@ swap(VALUE * array, uint64_t index1, uint64_t index2){
 VALUE
 m_offer(VALUE self, VALUE key){
   t_bheap data;
+  VALUE * aux_data;
   uint64_t index, aux;
   boolean flag = true;
 
@@ -151,7 +158,12 @@ m_offer(VALUE self, VALUE key){
 
   if(data->size == data->array_size){
     data->array_size = data->array_size * data->realloc_factor;
-    data->heap = realloc(data->heap, data->array_size * sizeof(VALUE));
+    aux_data = realloc(data->heap, data->array_size * sizeof(VALUE));
+    if (aux_data == NULL){
+      rb_raise(rb_eRuntimeError, "The computer ran out of memory.");
+    }else{
+      data->heap = aux_data;
+    }
   }
 
   index = data->size;
